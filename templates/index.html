@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Request Portal</title>
+    <style>
+        /* --- Font & Basic Reset --- */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f4f7f6;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* --- Main Container --- */
+        .container {
+            width: 100%;
+            max-width: 550px;
+            background-color: #ffffff;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        header p {
+            font-size: 14px;
+            color: #7f8c8d;
+            margin-bottom: 30px;
+        }
+
+        /* --- Form Styling --- */
+        .request-form { display: flex; flex-direction: column; gap: 20px; text-align: left; }
+        .form-group { display: flex; flex-direction: column; }
+
+        .form-group label {
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            color: #34495e;
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #dfe6e9;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .file-input-label:focus-within {
+            outline: none;
+            border-color: #007bff;
+            box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.15);
+        }
+
+        .form-group textarea { min-height: 120px; resize: vertical; }
+        .helper-text { font-size: 12px; color: #95a5a6; margin-top: 6px; }
+
+        /* --- Custom File Input Styling --- */
+        .file-input-hidden { display: none; }
+        .file-input-container { display: flex; align-items: center; gap: 12px; }
+        .file-input-label {
+            display: inline-block; padding: 10px 15px; border: 1px solid #dfe6e9; border-radius: 8px;
+            background-color: #f8f9fa; cursor: pointer; font-size: 14px; color: #495057;
+            transition: background-color 0.3s ease, border-color 0.3s ease;
+        }
+        .file-input-label:hover { background-color: #e9ecef; }
+        #file-name-display { font-size: 14px; color: #7f8c8d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+        /* --- Submit Button with Loading Spinner --- */
+        .submit-btn {
+            display: flex; justify-content: center; align-items: center; gap: 10px;
+            padding: 14px; border: none; border-radius: 8px; background-color: #007bff;
+            color: #ffffff; font-size: 16px; font-weight: 500; cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+        .submit-btn:hover { background-color: #0056b3; }
+        .submit-btn:disabled { background-color: #5a9eec; cursor: not-allowed; }
+        .spinner {
+            width: 20px; height: 20px; border: 2px solid rgba(255, 255, 255, 0.5);
+            border-top-color: #fff; border-radius: 50%; animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .hidden { display: none; }
+
+        /* --- Message Display --- */
+        #form-message { margin-top: 20px; padding: 12px; border-radius: 8px; font-size: 14px; display: none; }
+        #form-message.success { display: block; background-color: #d4edda; color: #155724; }
+        #form-message.error { display: block; background-color: #f8d7da; color: #721c24; }
+    </style>
+</head>
+<body>
+
+    <main class="container">
+        <header>
+            <h1>Submit a New Request</h1>
+            <p>Please fill out the form below and our team will get back to you shortly.</p>
+        </header>
+
+        <form id="customer-request-form" class="request-form">
+            <div class="form-group">
+                <label for="customer-name">Customer Name</label>
+                <input type="text" id="customer-name" name="customer_name" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="request-text">Request Text</label>
+                <textarea id="request-text" name="text_request" placeholder="Describe your issue or request..."></textarea>
+                <p class="helper-text">Please be as detailed as possible to help us resolve your issue faster.</p>
+            </div>
+
+            <div class="form-group">
+                <label for="audio-file">Audio File (Optional)</label>
+                <div class="file-input-container">
+                    <input type="file" id="audio-file" name="audio_file" accept="audio/*" class="file-input-hidden">
+                    <label for="audio-file" class="file-input-label" tabindex="0">Choose File</label>
+                    <span id="file-name-display">No file chosen</span>
+                </div>
+                 <p class="helper-text">You can upload an audio recording of your issue if you prefer.</p>
+            </div>
+
+            <button type="submit" class="submit-btn" id="submit-button">
+                <span class="btn-text">Submit Request</span>
+                <div class="spinner hidden"></div>
+            </button>
+        </form>
+
+        <div id="form-message"></div>
+    </main>
+
+    <script>
+        const form = document.getElementById('customer-request-form');
+        const audioFileInput = document.getElementById('audio-file');
+        const fileNameDisplay = document.getElementById('file-name-display');
+        const messageDiv = document.getElementById('form-message');
+        
+        const submitBtn = document.getElementById('submit-button');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const spinner = submitBtn.querySelector('.spinner');
+
+        // Logic for Custom File Input to show the selected file's name
+        audioFileInput.addEventListener('change', () => {
+            if (audioFileInput.files.length > 0) {
+                fileNameDisplay.textContent = audioFileInput.files[0].name;
+            } else {
+                fileNameDisplay.textContent = 'No file chosen';
+            }
+        });
+
+        // MERGED: Real form submission logic with loading spinner
+        form.addEventListener('submit', async function(event) {
+            event.preventDefault();
+
+            // Clear previous messages and show loading state
+            messageDiv.className = '';
+            messageDiv.textContent = '';
+            btnText.classList.add('hidden');
+            spinner.classList.remove('hidden');
+            submitBtn.disabled = true;
+
+            const formData = new FormData(form);
+
+            try {
+                // Use the fetch API to send a real POST request
+                const response = await fetch('/requests/', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                const result = await response.json();
+
+                if (response.status === 201) {
+                    messageDiv.textContent = `Success! Your request has been submitted with ID: ${result.id}`;
+                    messageDiv.className = 'success';
+                    form.reset();
+                    fileNameDisplay.textContent = 'No file chosen'; // Reset file name display
+                } else {
+                    messageDiv.textContent = `Error: ${result.detail || 'Could not submit the request.'}`;
+                    messageDiv.className = 'error';
+                }
+            } catch (error) {
+                messageDiv.textContent = `Network Error: Could not connect to the server.`;
+                messageDiv.className = 'error';
+            } finally {
+                // Hide loading state and re-enable button
+                btnText.classList.remove('hidden');
+                spinner.classList.add('hidden');
+                submitBtn.disabled = false;
+            }
+        });
+    </script>
+
+</body>
+</html>

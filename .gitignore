@@ -1,0 +1,15 @@
+# Python virtual environment
+venv/
+
+# Python cache files
+__pycache__/
+*.pyc
+
+# SQLite database
+requests.db
+
+# Ignore uploaded audio files but keep the directory
+# This ignores all files inside /uploads/
+uploads/*
+# But this makes sure the .gitkeep file is NOT ignored
+!uploads/.gitkeep
