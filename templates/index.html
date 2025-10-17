@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customer Request Portal</title>
     <style>
-        /* --- Font & Basic Reset --- */
+
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -20,7 +20,7 @@
             padding: 20px;
         }
 
-        /* --- Main Container --- */
+        /*Main container*/
         .container {
             width: 100%;
             max-width: 550px;
@@ -44,7 +44,7 @@
             margin-bottom: 30px;
         }
 
-        /* --- Form Styling --- */
+        /*Form Styling */
         .request-form { display: flex; flex-direction: column; gap: 20px; text-align: left; }
         .form-group { display: flex; flex-direction: column; }
 
@@ -74,7 +74,7 @@
         .form-group textarea { min-height: 120px; resize: vertical; }
         .helper-text { font-size: 12px; color: #95a5a6; margin-top: 6px; }
 
-        /* --- Custom File Input Styling --- */
+        /* Custom File Input Styling */
         .file-input-hidden { display: none; }
         .file-input-container { display: flex; align-items: center; gap: 12px; }
         .file-input-label {
@@ -85,7 +85,7 @@
         .file-input-label:hover { background-color: #e9ecef; }
         #file-name-display { font-size: 14px; color: #7f8c8d; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        /* --- Submit Button with Loading Spinner --- */
+        /* Submit Button with Loading Spinner */
         .submit-btn {
             display: flex; justify-content: center; align-items: center; gap: 10px;
             padding: 14px; border: none; border-radius: 8px; background-color: #007bff;
@@ -101,7 +101,7 @@
         @keyframes spin { to { transform: rotate(360deg); } }
         .hidden { display: none; }
 
-        /* --- Message Display --- */
+        /* Message Display */
         #form-message { margin-top: 20px; padding: 12px; border-radius: 8px; font-size: 14px; display: none; }
         #form-message.success { display: block; background-color: #d4edda; color: #155724; }
         #form-message.error { display: block; background-color: #f8d7da; color: #721c24; }
@@ -156,7 +156,7 @@
         const btnText = submitBtn.querySelector('.btn-text');
         const spinner = submitBtn.querySelector('.spinner');
 
-        // Logic for Custom File Input to show the selected file's name
+        // show selected file name
         audioFileInput.addEventListener('change', () => {
             if (audioFileInput.files.length > 0) {
                 fileNameDisplay.textContent = audioFileInput.files[0].name;
@@ -165,11 +165,11 @@
             }
         });
 
-        // MERGED: Real form submission logic with loading spinner
+        // form submit + loading
         form.addEventListener('submit', async function(event) {
             event.preventDefault();
 
-            // Clear previous messages and show loading state
+            // clear old messages & show loading
             messageDiv.className = '';
             messageDiv.textContent = '';
             btnText.classList.add('hidden');
@@ -179,7 +179,7 @@
             const formData = new FormData(form);
 
             try {
-                // Use the fetch API to send a real POST request
+                // send POST request
                 const response = await fetch('/requests/', {
                     method: 'POST',
                     body: formData
@@ -200,7 +200,7 @@
                 messageDiv.textContent = `Network Error: Could not connect to the server.`;
                 messageDiv.className = 'error';
             } finally {
-                // Hide loading state and re-enable button
+                // hide loading & enable button
                 btnText.classList.remove('hidden');
                 spinner.classList.add('hidden');
                 submitBtn.disabled = false;
