@@ -5,14 +5,14 @@ This project is a simplified Customer Request System built using FastAPI, vanill
 ________________________________________
 # Table of Contents  
 •	[Project Overview](#Project-overview)  
-•	Tech Stack  
-•	Folder Structure  
-•	Getting Started  
-•	Setup & Installation  
-•	Usage  
-•	API Endpoints  
-•	Notes  
-•	Timeline  
+•	[Tech Stack](#Tech Stack)  
+•	[Folder Structure](#Folder Structure)  
+•	[Getting Started](#Getting Started)  
+•	[Setup & Installation](#Setup & Installation)  
+•	[Usage](#Usage)  
+•	[API Endpoints](#API Endpoints, Using curl (PowerShell))  
+•	[Notes](Notes)  
+•	[Timeline](#Project Timeline/ Estimation)  
 ________________________________________  
 # Project Overview  
 The system has 2 main components:  
