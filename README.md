@@ -3,7 +3,6 @@ This project is a simplified Customer Request System built using FastAPI, vanill
 
 # Video link for a quick project demonstration and working:  
 ________________________________________
-# Table of Contents  
 # Table of Contents
 - [Project Overview](#project-overview)
 - [Tech Stack](#tech-stack)
@@ -16,7 +15,7 @@ ________________________________________
 - [Project Timeline/ Estimation](#project-timeline)
 ________________________________________  
 # Project Overview  
-The system has 2 main components:  
+This system has 2 main components:  
 1.	Backend REST API (FastAPI)  
 Handles customer requests, solutions, and file uploads. Stores all data in a simple SQLite database.  
 2.	Frontend Web Portal  
@@ -145,7 +144,6 @@ ________________________________________
 •	This project is designed to be iterative and scalable.
 ________________________________________  
 # Project Timeline 
-
 Day 1     :- Backend setup & database creation [15-OCT]  
 Day 2     :- Implement API endpoints [16-OCT]  
 Day 3     :- Frontend form & integration with backend [17-Oct]  
