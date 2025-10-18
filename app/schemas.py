@@ -1,7 +1,7 @@
 from pydantic import BaseModel
 from typing import List, Optional
 
-# --- Solution Schemas ---
+#Solution Schemas
 class SolutionBase(BaseModel):
     volunteer_name: str
     solution_text: str
@@ -16,7 +16,7 @@ class Solution(SolutionBase):
     class Config:
         from_attributes = True
 
-# --- Request Schemas ---
+# Request Schemas
 class RequestBase(BaseModel):
     customer_name: str
     request_text: Optional[str] = None
