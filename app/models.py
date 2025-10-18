@@ -8,8 +8,8 @@ class Request(Base):
     id = Column(Integer, primary_key=True, index=True)
     customer_name = Column(String, index=True)
     request_text = Column(String, nullable=True)
-    audio_file_path = Column(String, nullable=True) # To store the path to the audio file
-    status = Column(String, default="open") # Status can be 'open' or 'closed' [cite: 18]
+    audio_file_path = Column(String, nullable=True) # save audio file path
+    status = Column(String, default="open") # status: open or closed
 
     solutions = relationship("Solution", back_populates="request")
 
@@ -19,6 +19,6 @@ class Solution(Base):
     id = Column(Integer, primary_key=True, index=True)
     solution_text = Column(String)
     volunteer_name = Column(String)
-    request_id = Column(Integer, ForeignKey("requests.id")) # Links to the request it solves [cite: 19]
+    request_id = Column(Integer, ForeignKey("requests.id")) # linked to its request
 
     request = relationship("Request", back_populates="solutions")
