@@ -13,10 +13,10 @@ models.Base.metadata.create_all(bind=engine)
 
 app = FastAPI()
 
-# Setup for serving HTML templates
+# setup to serve HTML templates
 templates = Jinja2Templates(directory="templates")
 
-# Dependency to get the DB session
+# get db session
 def get_db():
     db = SessionLocal()
     try:
@@ -24,12 +24,12 @@ def get_db():
     finally:
         db.close()
 
-# Endpoint to serve the HTML frontend
+# serve HTML frontend
 @app.get("/")
 def serve_home(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
 
-# Modified endpoint to handle form data and file uploads
+# handle form & file uploads
 @app.post("/requests/", response_model=schemas.Request, status_code=201)
 def create_new_request_from_form(
     db: Session = Depends(get_db),
@@ -38,17 +38,17 @@ def create_new_request_from_form(
     audio_file: Optional[UploadFile] = File(None)
 ):
     """
-    Creates a new customer request from form data, including saving an audio file.
+    create new customer request from form, save audio
     """
     file_path = None
     if audio_file and audio_file.filename:
-        # Generate a unique filename to prevent overwrites
+        # make unique filename
         unique_id = uuid.uuid4()
         file_extension = audio_file.filename.split(".")[-1]
         unique_filename = f"{unique_id}.{file_extension}"
         file_path = f"uploads/{unique_filename}"
 
-        # Save the file to the 'uploads' directory
+        # save file in uploads
         with open(file_path, "wb") as buffer:
             shutil.copyfileobj(audio_file.file, buffer)
 
