@@ -13,7 +13,7 @@ ________________________________________
 - [Usage](#usage)
 - [API Endpoints (Using curl PowerShell)](#api-endpoints-using-curl-powershell)
 - [Notes](#notes)
-- [Project Timeline / Estimation](#project-timeline--estimation)
+- [Project Timeline/ Estimation](#project-timeline)
 ________________________________________  
 # Project Overview  
 The system has 2 main components:  
@@ -144,7 +144,7 @@ ________________________________________
 •	The portal is a single-page application.  
 •	This project is designed to be iterative and scalable.
 ________________________________________  
-# Project Timeline/ Estimation  
+# Project Timeline 
 
 Day 1     :- Backend setup & database creation [15-OCT]  
 Day 2     :- Implement API endpoints [16-OCT]  
