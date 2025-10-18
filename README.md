@@ -2,6 +2,7 @@
 This project is a simplified Customer Request System built using FastAPI, vanilla JavaScript, HTML, CSS, and SQLite. It allows customers to submit requests (text or optional audio), manage solutions, and track the status of their requests through a simple web portal and REST API.  
 
 # Video link for a quick project demonstration and working:  
+will br added soon
 ________________________________________
 # Table of Contents
 - [Project Overview](#project-overview)
