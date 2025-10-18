@@ -4,7 +4,7 @@ This project is a simplified Customer Request System built using FastAPI, vanill
 # Video link for a quick project demonstration and working:  
 ________________________________________
 # Table of Contents  
-•	Project Overview  
+•	[Project Overview](#Project-overview)  
 •	Tech Stack  
 •	Folder Structure  
 •	Getting Started  
