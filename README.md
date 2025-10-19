@@ -103,18 +103,18 @@ This endpoint is used by the web form to create a new customer request.
 This endpoint fetches a list of every request in the database.  
 o	To get all requests:
 ```  
-curl "[http://127.0.0.1:8000/requests/](http://127.0.0.1:8000/requests/)"
+curl "http://127.0.0.1:8000/requests/"
 ```
   o	To get only the "open" requests:  
 ```
-curl "[http://127.0.0.1:8000/requests/?status=open](http://127.0.0.1:8000/requests/?status=open)"
+curl "http://127.0.0.1:8000/requests/?status=open"
 ```
 
 4. View a Single Request  
 This endpoint fetches the details for one specific request.  
 (This command gets the request with an ID of 1.)
 ```
-curl "[http://127.0.0.1:8000/requests/1](http://127.0.0.1:8000/requests/1)"
+curl "http://127.0.0.1:8000/requests/1"
 ```
 
 6. Listen to an Audio File  
@@ -128,14 +128,16 @@ This endpoint lets you listen to the audio file attached to a request.
 This endpoint adds a solution from a volunteer to an existing request.   
 (This command adds a solution to the request with ID 1.)
 ```
-curl -Method POST -Uri "[http://127.0.0.1:8000/requests/1/solutions](http://127.0.0.1:8000/requests/1/solutions)" -Headers @{"Content-Type"="application/json"} -Body '{"volunteer_name": "Alice", "solution_text": "Please try restarting your computer."}'
+curl -Method POST -Uri "http://127.0.0.1:8000/requests/1/solutions" `
+     -Headers @{"Content-Type"="application/json"} `
+     -Body '{"volunteer_name": "Alice", "solution_text": "Please try restarting your computer."}'
 ```
   
 9. Close a Request  
 This endpoint marks a request as "closed."  
 (command close to request with ID 1.)
 ```
-curl -Method PUT -Uri "[http://127.0.0.1:8000/requests/1/close](http://127.0.0.1:8000/requests/1/close)"
+curl -Method PUT -Uri "http://127.0.0.1:8000/requests/1/close"
 ```
 
 ________________________________________  
