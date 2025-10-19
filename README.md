@@ -145,7 +145,7 @@ ________________________________________
 # Notes  
 •	Audio files uploaded by customers are stored in the uploads/ folder.  
 •	The portal is a single-page application.  
-•	This project is designed to be iterative and scalable.
+•	This project is designed to be iterative and scalable.  
 • Some files/folders listed in the folder structure may not appear in the repo but they are created automatically when the project is run or during execution.  
 ________________________________________  
 # Project Timeline 
