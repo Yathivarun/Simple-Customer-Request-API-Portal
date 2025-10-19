@@ -1,6 +1,8 @@
 # Simple Customer Request API & Portal
 This project is a simplified Customer Request System built using FastAPI, vanilla JavaScript, HTML, CSS, and SQLite. It allows customers to submit requests (text or optional audio), manage solutions, and track the status of their requests through a simple web portal and REST API.  
 
+![Alt Text](https://github.com/Yathivarun/Python-AIML-Projects/blob/main/images/simple_form.png)  
+
 # Video link for a quick project demonstration and working:  
 will be added soon
 ________________________________________
