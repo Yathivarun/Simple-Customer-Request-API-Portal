@@ -128,9 +128,8 @@ This endpoint lets you listen to the audio file attached to a request.
 This endpoint adds a solution from a volunteer to an existing request.   
 (This command adds a solution to the request with ID 1.)
 ```
-curl -Method POST -Uri "http://127.0.0.1:8000/requests/1/solutions" `
-     -Headers @{"Content-Type"="application/json"} `
-     -Body '{"volunteer_name": "Alice", "solution_text": "Please try restarting your computer."}'
+curl -Method POST -Uri "http://127.0.0.1:8000/requests/1/solutions" -Headers @{"Content-Type"="application/json"} -Body '{"volunteer_name": "Alice", "solution_text": "Please try restarting your computer."}'
+
 ```
   
 9. Close a Request  
