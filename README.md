@@ -43,7 +43,7 @@ customer_request_api/
 │   └── index.html  
 ├── uploads/              - audio uploads from customers  
 ├── venv/                 - Python virtual environment (not included in repo)  
-├── requests.db           - SQLite database  
+├── requests.db           - SQLite database (not included in repo)   
 ├── requirements.txt      - Python dependencies  
 └── README.md             - Project documentation
 ```
