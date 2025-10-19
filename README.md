@@ -4,7 +4,7 @@ This project is a simplified Customer Request System built using FastAPI, vanill
 ![Alt Text](https://github.com/Yathivarun/Python-AIML-Projects/blob/main/images/simple_form.png)  
 
 # Video link for a quick project demonstration and working:  
-will be added soon
+*will be added soon*
 ________________________________________
 # Table of Contents
 - [Project Overview](#project-overview)
