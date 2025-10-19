@@ -68,7 +68,7 @@ python -m venv venv
 ```
   (note: if execution of scripts is disabled on system, use the below command to temporarly run the virtual environment:  
 ```
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process )
+Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope Process 
 ```
   macOS/Linux: 
 ```
