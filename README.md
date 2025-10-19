@@ -146,9 +146,11 @@ ________________________________________
 •	Audio files uploaded by customers are stored in the uploads/ folder.  
 •	The portal is a single-page application.  
 •	This project is designed to be iterative and scalable.
+• Some files/folders listed in the folder structure may not appear in the repo but they are created automatically when the project is run or during execution.  
 ________________________________________  
 # Project Timeline 
 Day 1     :- Backend setup & database creation [15-OCT]  
 Day 2     :- Implement API endpoints [16-OCT]  
-Day 3     :- Frontend form & integration with backend [17-Oct]  
-Day 4     :- Testing, bug fixes, and documentation [18-OCT]  
+Day 3     :- Frontend form & backend integration [17-Oct]  
+Day 4     :- Code refactoring, Testing, bug fixes [18-OCT]  
+Day 5     :- Documentation & Final review [19-Oct]
