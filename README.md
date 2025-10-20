@@ -149,8 +149,8 @@ ________________________________________
 • Some files/folders listed in the folder structure may not appear in the repo but they are created automatically when the project is run or during execution.  
 ________________________________________  
 # Project Timeline 
-Day 1     :- Backend setup & database creation [15-OCT]  
-Day 2     :- Implement API endpoints [16-OCT]  
-Day 3     :- Frontend form & backend integration [17-Oct]  
-Day 4     :- Code refactoring, Testing, bug fixes [18-OCT]  
-Day 5     :- Documentation & Final review [19-Oct]
+Day 1     :- Backend setup & database creation  
+Day 2     :- Implement API endpoints  
+Day 3     :- Frontend form & backend integration  
+Day 4     :- Code refactoring, Testing, bug fixes  
+Day 5     :- Documentation & Final review
